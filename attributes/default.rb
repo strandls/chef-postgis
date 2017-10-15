@@ -23,8 +23,9 @@ when 'fedora', 'rhel', 'centos'
 when 'debian'
   if node['platform'] == 'ubuntu' && node['platform_version'].to_f <= 12.04
     default['postgis']['package'] = 'postgresql-9.1-postgis2'
-  else
+  elsif node['platform'] == 'ubuntu' && node['platform_version'].to_f <= 14.04
     default['postgis']['package'] = 'postgresql-9.3-postgis-2.1'
+  else
+    default['postgis']['package'] = 'postgresql-9.5-postgis-2.3'
   end
 end
-
